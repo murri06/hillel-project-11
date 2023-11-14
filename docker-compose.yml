@@ -1,0 +1,17 @@
+version: '1.0'
+
+services:
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: php -S 0.0.0.0:80
+    volumes:
+      - ".:/var/www/html"
+    ports:
+      - "80:80"
+  composer:
+    image: composer
+    command: install
+    volumes:
+      - ".:/app"
